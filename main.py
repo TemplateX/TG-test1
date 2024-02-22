@@ -44,7 +44,7 @@ def main(Client, message):
       print(message.link)
     else:
       #print(finale)
-      if (message.chat.title == "AiogramEmailTest1") and (finale == 'a3d509e880d57e4d9e075b5c9d14e5eddcb17cc4'):
+      if finale == 'a3d509e880d57e4d9e075b5c9d14e5eddcb17cc4':
           print('from_bot')
           app.send_message(chat_id='hrdshs00rhsge36w2546', text="Бот прислал а3")
           return 0
