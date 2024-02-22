@@ -10,7 +10,7 @@ import time
 import os
 
 api_id = str(os.environ['s_api_id'])
-api_hash = (os.environ['s_api_hash'])
+api_hash = str(os.environ['s_api_hash'])
 app = Client("my_account", api_id, api_hash)
 print('qq:')
 
