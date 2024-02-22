@@ -9,11 +9,11 @@ import time
 # 51.79.229.202:3128
 import os
 
-api_id = str(os.environ['s_api_id'])
-api_hash = str(os.environ['s_api_hash'])
-# session_string = str(os.environ['s_session_string'])
-app = Client("my_account", api_id, api_hash)
-# app = Client("my_account", session_string=session_string)
+# api_id = str(os.environ['s_api_id'])
+# api_hash = str(os.environ['s_api_hash'])
+session_string = str(os.environ['s_session_string'])
+# app = Client("my_account", api_id, api_hash)
+app = Client("my_account", session_string=session_string)
 print('qq-:')
 
 
