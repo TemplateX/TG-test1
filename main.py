@@ -14,7 +14,7 @@ api_hash = str(os.environ['s_api_hash'])
 # session_string = str(os.environ['s_session_string'])
 app = Client("my_account", api_id, api_hash)
 # app = Client("my_account", session_string=session_string)
-print('qq:')
+print('qq-:')
 
 
 PUBLIC_FROM = [
