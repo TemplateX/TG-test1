@@ -9,9 +9,11 @@ import time
 # 51.79.229.202:3128
 import os
 
-api_id = str(os.environ['s_api_id'])
-api_hash = str(os.environ['s_api_hash'])
-app = Client("my_account", api_id, api_hash)
+#api_id = str(os.environ['s_api_id'])
+#api_hash = str(os.environ['s_api_hash'])
+session_string = str(os.environ['s_session_string'])
+#app = Client("my_account", api_id, api_hash)
+app = Client("my_account", session_string=session_string)
 print('qq:')
 
 
@@ -58,5 +60,5 @@ def main(Client, message):
       app.send_message(chat_id='hrdshs00rhsge36w2546', text=finale)
 
 
-# keep_alive()
+keep_alive()
 app.run()  # Automatically start() and idle()
