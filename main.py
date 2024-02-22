@@ -29,6 +29,7 @@ PUBLIC_FROM = [
     'news_sirena',
     'bbbreaking',
     'rusbrief',
+    6631267217,
     'yxoydo6si6e7474uf'#Мой скрытый канал
     #"-1002047800128" #Template - мой канал id,
 ]
@@ -43,6 +44,8 @@ def main(Client, message):
       print(message.link)
     else:
       #print(finale)
+      if (message.chat.title == "AiogramEmailTest1") and (finale == 'a3d509e880d57e4d9e075b5c9d14e5eddcb17cc4'):
+          print('from_bot')
       if message.chat.title is not None:
         tz_moscow = pytz.timezone("Europe/Moscow")
         dt_moscow = str(datetime.datetime.now(tz_moscow).strftime("%d.%m.%Y_%H:%M:%S"))
