@@ -44,10 +44,23 @@ def main(Client, message):
       print(message.link)
     else:
       #print(finale)
-      if finale == 'a3d509e880d57e4d9e075b5c9d14e5eddcb17cc4':
+      a3d509 = str(os.environ['s_a3d509'])
+      #if finale == 'a3d509e880d57e4d9e075b5c9d14e5eddcb17cc4':
+      if finale == a3d509:
+          # тут мы должны начать собирать новости
           print('from_bot')
-          app.send_message(chat_id='hrdshs00rhsge36w2546', text="Бот прислал а3")
+          #app.send_message(chat_id='hrdshs00rhsge36w2546', text="Бот прислал а3")
           return 0
+          #print(finale)
+      
+      v5bmq = str(os.environ['s_v5bmq'])
+      #if finale == 'v5bmqlf3hdp2kzejy5y3pj68fnffh3ou1e5j9mbh':
+      if finale == v5bmq:
+          # тут мы должны ЗАКОНЧИТЬ собирать новости
+          print('from_bot')
+          #app.send_message(chat_id='hrdshs00rhsge36w2546', text="Бот прислал v5bmq")
+          return 0
+          
       if message.chat.title is not None:
         tz_moscow = pytz.timezone("Europe/Moscow")
         dt_moscow = str(datetime.datetime.now(tz_moscow).strftime("%d.%m.%Y_%H:%M:%S"))
