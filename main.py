@@ -8,7 +8,7 @@ import os
 import smtplib
 from email.mime.text import MIMEText
 from cryptography.fernet import Fernet
-
+import requests
 
 
 with open('BabyFile.txt', 'w+') as file:
@@ -64,7 +64,7 @@ PUBLIC_FROM = [
     'news_sirena',
     'bbbreaking',
     'rusbrief',
-    6631267217,
+    #6631267217,
     'yxoydo6si6e7474uf'#Мой скрытый канал
     #"-1002047800128" #Template - мой канал id,
 ]
@@ -158,6 +158,9 @@ def main(Client, message):
               print(message, '\nЩас отправлю это!!')
               send_email(message=message)
               print('отправка - всё')
+              requested_msg = str(message)
+              requested_msg_fin = f'https://api.telegram.org/bot6631267217:AAHfS5tx-r2-FZ8aZBTMEZdmhR4Y8gAZx8w/sendMessage?chat_id=930102339&text={requested_msg}'
+              requests.get(requested_msg_fin)
               
               start_time = time.time()
               string_to_file_array.clear()
