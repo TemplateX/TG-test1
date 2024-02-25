@@ -9,6 +9,12 @@ import smtplib
 from email.mime.text import MIMEText
 from cryptography.fernet import Fernet
 
+
+
+with open('BabyFile.txt', 'w+') as file:
+    file.write('ку-ку1')
+
+
 def send_email(message):
     sender = 'kaomedino12170@gmail.com'
     #password = str(os.environ['s_gmail_password'])
