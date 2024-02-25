@@ -70,7 +70,7 @@ PUBLIC_FROM = [
 ]
 
 #для почты таймер и складирование новостей
-#start_time = time.time()
+start_time = time.time()
 string_to_file_array = []
 
 @app.on_message(filters.chat(PUBLIC_FROM))
@@ -116,14 +116,15 @@ def main(Client, message):
       app.send_message(chat_id='hrdshs00rhsge36w2546', text=finale)
       
       global string_to_file_array
-      
+      global start_time
       string_to_file_array.append(finale)
       #end_time = time.time()
       if len(string_to_file_array)==1:
+          
           start_time = time.time()
       if len(string_to_file_array)>1:
           end_time = time.time()
-          global start_time
+          
           my_time = round(end_time - start_time)
           print(my_time, len(string_to_file_array))
           finstr = ""
