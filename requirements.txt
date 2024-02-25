@@ -3,3 +3,4 @@ flask
 pytz
 datetime
 cryptography
+requests
