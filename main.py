@@ -1,13 +1,40 @@
 print('qq1')
 from keep_alive import keep_alive
-
-#telegram
 from pyrogram import Client, filters
 import pytz
 import datetime
 import time
-# 51.79.229.202:3128
 import os
+import smtplib
+from email.mime.text import MIMEText
+from cryptography.fernet import Fernet
+
+def send_email(message):
+    sender = 'kaomedino12170@gmail.com'
+    #password = str(os.environ['s_gmail_password'])
+    password = 'ojau uvcy zvta myfc' #для ГМАИЛ
+    server = smtplib.SMTP("smtp.gmail.com", 587)
+    server.starttls()
+    try:
+        server.login(sender, password)
+        msg = MIMEText(message)
+        msg["Subject"] = "687e71a20ce194e1b94247e85e6f8d024f0a20e9"
+        server.sendmail(sender, "t.avganov@internet.ru", msg.as_string())
+
+        return "Message was sent!)"
+    except Exception as _ex:
+        return f"{_ex}\nCheck Your logn or psswd"
+
+def load_key():
+    return Fernet.generate_key()
+
+def encrypt(filename, key):
+    f = Fernet(key)
+    with open(filename, 'rb') as file:
+        file_data = file.read()
+        encrypted_data = f.encrypt(file_data)
+        with open(filename, 'wb') as file:
+            file.write(encrypted_data)
 
 api_id = str(os.environ['s_api_id'])
 api_hash = str(os.environ['s_api_hash'])
@@ -34,6 +61,9 @@ PUBLIC_FROM = [
     #"-1002047800128" #Template - мой канал id,
 ]
 
+#для почты таймер и складирование новостей
+start_time = time.time()
+string_to_file_array = []
 
 @app.on_message(filters.chat(PUBLIC_FROM))
 def main(Client, message):
@@ -76,7 +106,48 @@ def main(Client, message):
         print('-------message.chat.title is None')
       print(finale)
       app.send_message(chat_id='hrdshs00rhsge36w2546', text=finale)
+      
+      
+      string_to_file_array.append(finale)
+      end_time = time.time()
+      my_time = round(end_time - start_time)
+      print(my_time, len(string_to_file_array))
+      finstr = ""
+      # if (my_time > 900) and (len(string_to_file_array)>10):
+      if (my_time > 600) and (len(string_to_file_array)>3):
+          for inarraynews in string_to_file_array:
+              finstr = finstr + '\n\n' + '-–—-–—-–—-–—-–—' + '\n\n' + inarraynews
+          print('\n*()*()*()\n\n', finstr, '\n\n*()*()*()\n')
 
+          #шифровальщик
+          my_str = finstr
+          my_file = open("BabyFile.txt", "w+")
+          my_file.write(my_str)
+          my_file.close()
+          #my_file = open("BabyFile.txt", "a+")
+          #my_file.write("\n\nи еще кое-что!")
+          #my_file.close()
+
+          key = load_key()
+          file = 'BabyFile.txt'
+          # зашифровать файл
+          encrypt(file, key)
+          with open('BabyFile.txt', 'r+') as file:
+             content = file.read()  # Чтение
+             file.seek(0, 0)  # Переход в начало файла
+             file.write(str(key, encoding='utf-8')[:-1])  # Запись новой строки
+             #-2  # через replace убираю знаки равно
+             content = content.replace('=', "")
+             file.write(content)
+          
+          with open('BabyFile.txt', 'r+') as file:
+              message = file.read()
+          print(message, '\nЩас отправлю это!!')
+          send_email(message=message)
+          print('отправка - всё')
+          
+          start_time = time.time()
+          string_to_file_array.clear()
 
 keep_alive()
 app.run()  # Automatically start() and idle()
