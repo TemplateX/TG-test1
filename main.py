@@ -110,6 +110,8 @@ def main(Client, message):
       
       string_to_file_array.append(finale)
       end_time = time.time()
+      global start_time
+      global string_to_file_array
       my_time = round(end_time - start_time)
       print(my_time, len(string_to_file_array))
       finstr = ""
