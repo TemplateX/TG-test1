@@ -160,9 +160,9 @@ def main(Client, message):
               print(message, '\nЩас отправлю это!!')
               send_email(message=message)
               print('отправка - всё')
-              requested_msg = str(message)
-              requested_msg_fin = f'https://api.telegram.org/bot6631267217:AAHfS5tx-r2-FZ8aZBTMEZdmhR4Y8gAZx8w/sendMessage?chat_id=930102339&text={requested_msg}'
-              requests.get(requested_msg_fin)
+              #requested_msg = str(message)
+              #requested_msg_fin = f'https://api.telegram.org/bot6631267217:AAHfS5tx-r2-FZ8aZBTMEZdmhR4Y8gAZx8w/sendMessage?chat_id=930102339&text={requested_msg}'
+              #requests.get(requested_msg_fin)
               
               start_time = time.time()
               string_to_file_array.clear()
