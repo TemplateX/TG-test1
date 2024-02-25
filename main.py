@@ -13,7 +13,9 @@ from cryptography.fernet import Fernet
 
 with open('BabyFile.txt', 'w+') as file:
     file.write('ку-ку1')
-
+my_file = open("BabyFile.txt", "a+")
+my_file.write("и еще кое-что!")
+my_file.close()
 
 def send_email(message):
     sender = 'kaomedino12170@gmail.com'
