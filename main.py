@@ -120,6 +120,7 @@ def main(Client, message):
       if len(string_to_file_array)==1:
           start_time = time.time()
       if len(string_to_file_array)>1:
+          end_time = time.time()
           my_time = round(end_time - start_time)
           print(my_time, len(string_to_file_array))
           finstr = ""
