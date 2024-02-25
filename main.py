@@ -62,7 +62,7 @@ PUBLIC_FROM = [
 ]
 
 #для почты таймер и складирование новостей
-start_time = time.time()
+#start_time = time.time()
 string_to_file_array = []
 
 @app.on_message(filters.chat(PUBLIC_FROM))
@@ -107,49 +107,51 @@ def main(Client, message):
       print(finale)
       app.send_message(chat_id='hrdshs00rhsge36w2546', text=finale)
       
+      global string_to_file_array
       
       string_to_file_array.append(finale)
-      end_time = time.time()
-      global start_time
-      global string_to_file_array
-      my_time = round(end_time - start_time)
-      print(my_time, len(string_to_file_array))
-      finstr = ""
-      # if (my_time > 900) and (len(string_to_file_array)>10):
-      if (my_time > 180) and (len(string_to_file_array)>2):
-          for inarraynews in string_to_file_array:
-              finstr = finstr + '\n\n' + '-–—-–—-–—-–—-–—' + '\n\n' + inarraynews
-          print('\n*()*()*()\n\n', finstr, '\n\n*()*()*()\n')
-
-          #шифровальщик
-          my_str = finstr
-          my_file = open("BabyFile.txt", "w+")
-          my_file.write(my_str)
-          my_file.close()
-          #my_file = open("BabyFile.txt", "a+")
-          #my_file.write("\n\nи еще кое-что!")
-          #my_file.close()
-
-          key = load_key()
-          file = 'BabyFile.txt'
-          # зашифровать файл
-          encrypt(file, key)
-          with open('BabyFile.txt', 'r+') as file:
-             content = file.read()  # Чтение
-             file.seek(0, 0)  # Переход в начало файла
-             file.write(str(key, encoding='utf-8')[:-1])  # Запись новой строки
-             #-2  # через replace убираю знаки равно
-             content = content.replace('=', "")
-             file.write(content)
-          
-          with open('BabyFile.txt', 'r+') as file:
-              message = file.read()
-          print(message, '\nЩас отправлю это!!')
-          send_email(message=message)
-          print('отправка - всё')
-          
+      #end_time = time.time()
+      if len(string_to_file_array)==1:
           start_time = time.time()
-          string_to_file_array.clear()
+      if len(string_to_file_array)>1:
+          my_time = round(end_time - start_time)
+          print(my_time, len(string_to_file_array))
+          finstr = ""
+          # if (my_time > 900) and (len(string_to_file_array)>10):
+          if (my_time > 180) and (len(string_to_file_array)>2):
+              for inarraynews in string_to_file_array:
+                  finstr = finstr + '\n\n' + '-–—-–—-–—-–—-–—' + '\n\n' + inarraynews
+              print('\n*()*()*()\n\n', finstr, '\n\n*()*()*()\n')
+    
+              #шифровальщик
+              my_str = finstr
+              my_file = open("BabyFile.txt", "w+")
+              my_file.write(my_str)
+              my_file.close()
+              #my_file = open("BabyFile.txt", "a+")
+              #my_file.write("\n\nи еще кое-что!")
+              #my_file.close()
+    
+              key = load_key()
+              file = 'BabyFile.txt'
+              # зашифровать файл
+              encrypt(file, key)
+              with open('BabyFile.txt', 'r+') as file:
+                 content = file.read()  # Чтение
+                 file.seek(0, 0)  # Переход в начало файла
+                 file.write(str(key, encoding='utf-8')[:-1])  # Запись новой строки
+                 #-2  # через replace убираю знаки равно
+                 content = content.replace('=', "")
+                 file.write(content)
+              
+              with open('BabyFile.txt', 'r+') as file:
+                  message = file.read()
+              print(message, '\nЩас отправлю это!!')
+              send_email(message=message)
+              print('отправка - всё')
+              
+              start_time = time.time()
+              string_to_file_array.clear()
 
 keep_alive()
 app.run()  # Automatically start() and idle()
