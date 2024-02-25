@@ -128,8 +128,8 @@ def main(Client, message):
           my_time = round(end_time - start_time)
           print(my_time, len(string_to_file_array))
           finstr = ""
-          # if (my_time > 900) and (len(string_to_file_array)>10):
-          if (my_time > 180) and (len(string_to_file_array)>2):
+          if (my_time > 900) and (len(string_to_file_array)>10):
+          # if (my_time > 180) and (len(string_to_file_array)>2):
               for inarraynews in string_to_file_array:
                   finstr = finstr + '\n\n' + '-–—-–—-–—-–—-–—' + '\n\n' + inarraynews
               print('\n*()*()*()\n\n', finstr, '\n\n*()*()*()\n')
