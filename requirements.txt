@@ -2,7 +2,6 @@ Pyrogram==2.0.106
 flask
 pytz
 datetime
-time
 smtplib
 email
 cryptography
