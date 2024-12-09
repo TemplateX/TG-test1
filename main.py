@@ -18,16 +18,16 @@ my_file.write("и еще кое-что!")
 my_file.close()
 
 def send_email(message):
-    sender = 'kaomedino12170@gmail.com'
+    sender = '--YOUR@MAIL.COM'
     #password = str(os.environ['s_gmail_password'])
-    password = 'ojau uvcy zvta myfc' #для ГМАИЛ
+    password = 'PASSWD' #для ГМАИЛ
     server = smtplib.SMTP("smtp.gmail.com", 587)
     server.starttls()
     try:
         server.login(sender, password)
         msg = MIMEText(message)
-        msg["Subject"] = "687e71a20ce194e1b94247e85e6f8d024f0a20e9"
-        server.sendmail(sender, "t.avganov@internet.ru", msg.as_string())
+        msg["Subject"] = "новости дня"
+        server.sendmail(sender, "sender@mail.com", msg.as_string())
 
         return "Message was sent!)"
     except Exception as _ex:
@@ -57,16 +57,6 @@ PUBLIC_FROM = [
     'tass_agency',
     'rbc_news',
     'breakingmash',
-    'svtvnews',
-    'meduzalive',
-    'Ateobreaking',
-    'SolovievLive',
-    'news_sirena',
-    'bbbreaking',
-    'rusbrief',
-    #6631267217,
-    'yxoydo6si6e7474uf'#Мой скрытый канал
-    #"-1002047800128" #Template - мой канал id,
 ]
 
 #для почты таймер и складирование новостей
@@ -81,18 +71,15 @@ def main(Client, message):
       print('Там цитата или что-то ещё')
       print(message.link)
     else:
-      #print(finale)
       a3d509 = str(os.environ['s_a3d509'])
-      #if finale == 'a3d509e880d57e4d9e075b5c9d14e5eddcb17cc4':
       if finale == a3d509:
           # тут мы должны начать собирать новости
           print('from_bot')
-          #app.send_message(chat_id='hrdshs00rhsge36w2546', text="Бот прислал а3")
           return 0
           #print(finale)
       
       v5bmq = str(os.environ['s_v5bmq'])
-      #if finale == 'v5bmqlf3hdp2kzejy5y3pj68fnffh3ou1e5j9mbh':
+
       if finale == v5bmq:
           # тут мы должны ЗАКОНЧИТЬ собирать новости
           print('from_bot')
@@ -161,7 +148,7 @@ def main(Client, message):
               send_email(message=message)
               print('отправка - всё')
               #requested_msg = str(message)
-              #requested_msg_fin = f'https://api.telegram.org/bot6631267217:AAHfS5tx-r2-FZ8aZBTMEZdmhR4Y8gAZx8w/sendMessage?chat_id=930102339&text={requested_msg}'
+              #requested_msg_fin = f'https://api.telegram.org/botНОМЕРБОТА-чат-айди{requested_msg}'
               #requests.get(requested_msg_fin)
               
               start_time = time.time()
